@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import burger1 from "../../assets/burger1.png";
 import burger2 from "../../assets/burger2.png";
-// import burger3 here
+import burger3 from "../../assets/burger3.png";
 
 const CartItem = ({ value, title, img, increment, decrement }) => (
   <div className="cartItem">
@@ -20,52 +20,116 @@ const CartItem = ({ value, title, img, increment, decrement }) => (
 );
 
 const Cart = () => {
-  const increment = (item) => {};
+  
+  const [hamburguesaQueso,setHamburguesaQueso] = useState(0)
+  const [hamburguesaVeg,setHamburguesaVeg] = useState(0)
+  const [hamburguesaFritas,setHamburguesaFritas] = useState(0)
+  const [subTotal,setSubTotal] = useState(0)
+  const [impuestos,setImpuestos] = useState(0)
+  const [total,setTotal] = useState(2.30)
+  const gastosEnvios= useState(2.30)
 
-  const decrement = (item) => {};
+      
+  const increment = (item) => {
+    
+      switch (item) {
+        case 'hamburguesaQueso':
+          setHamburguesaQueso(prev => prev + 1)
+          
+          break;
+        case 'hamburguesaVeg':
+          setHamburguesaVeg(prev => prev + 1)
+          
+          break;
+        case 'hamburguesaFritas':
+          setHamburguesaFritas(prev => prev + 1)
+          
+          break;
+        default:
+      }
+      
+  };
+
+  const decrement = (item) => { 
+    switch (item) {
+      case 'hamburguesaQueso':
+        if (hamburguesaQueso !== 0){
+          setHamburguesaQueso(prev => prev - 1)
+        }else{
+          setHamburguesaQueso(0);
+        }
+        break;
+      case 'hamburguesaVeg':
+        if (hamburguesaVeg !== 0){
+          setHamburguesaVeg(prev => prev - 1)
+          
+        }else{
+          setHamburguesaVeg(0);
+        }
+        break;
+      case 'hamburguesaFritas':
+        if (hamburguesaFritas !== 0){
+          setHamburguesaFritas(prev => prev -1)
+          
+        }else{
+          setHamburguesaFritas(0)
+        }   
+        
+        break;
+      default:
+    }
+  };
+  
+  useEffect(()=>{
+      setSubTotal(hamburguesaFritas*6.10+hamburguesaQueso*3.30+hamburguesaVeg*4.5)
+      setImpuestos(()=>(subTotal*0.21).toFixed(2))
+      setTotal(()=> (parseFloat(subTotal)+parseFloat(impuestos)+parseFloat(gastosEnvios)).toFixed(2))
+      
+  },[subTotal,hamburguesaFritas,hamburguesaQueso,hamburguesaVeg,gastosEnvios,impuestos])
 
   return (
     <section className="cart">
       <main>
         <CartItem
-          title={"Cheese Burger"}
+          title={"Hamburguesa con queso"}
           img={burger1}
-          value={0}
-          increment={() => increment(1)}
-
-        // Add the function for decrementing the order by 1 
-       
+          value={hamburguesaQueso}
+          increment={() => increment("hamburguesaQueso")}
+          decrement={() => decrement("hamburguesaQueso")}
         />
         <CartItem
-          title={"Veg Cheese Burger"}
+          title={"Hamburguesa vegetariana con queso"}
           img={burger2}
-          value={0}
-          increment={() => increment(2)}
-        // Add the function for decrementing the order by 2
-       
+          value={hamburguesaVeg}
+          increment={() => increment("hamburguesaVeg")}
+          decrement={() => decrement("hamburguesaVeg")}
         />
-
-        {/* Fill up the code for Cheese Burger similarly */}
-       
+        <CartItem
+          title={"Hamburguesa con queso y patatas fritas"}
+          img={burger3}
+          value={hamburguesaFritas}
+          increment={() => increment("hamburguesaFritas")}
+          decrement={() => decrement("hamburguesaFritas")}
+        />
 
         <article>
           <div>
             <h4>Sub Total</h4>
-            <p>₹{2000}</p>
+            <p>€ {subTotal.toFixed(2)}</p>
           </div>
           <div>
-            <h4>Tax</h4>
-            <p>₹{2000 * 0.18}</p>
+            <h4>IVA</h4>
+            <p>€ {impuestos}</p>
           </div>
           <div>
-            <h4>Shipping Charges</h4>
-            <p>₹{200}</p>
+            <h4>Gastos de envío</h4>
+            <p>€ {gastosEnvios}</p>
           </div>{" "}
           <div>
             <h4>Total</h4>
-            <p>₹{2000 + 2000 * 0.18 + 200}</p>
+            <p>€ {total}</p>
           </div>
-          <Link to="/shipping">Checkout</Link>
+          <Link to="/shipping">Envío</Link>
         </article>
       </main>
     </section>

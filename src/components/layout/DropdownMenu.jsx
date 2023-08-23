@@ -6,7 +6,7 @@ function DropdownMenu() {
 
   useEffect(() => {
     const navs = [
-      { name: "Login", path: "/login" },
+      {name:"Login", path:"/login"},
       {name:"Orders", path:"/myorders"},
       {name:"Logout", path:"/login"}
       
@@ -15,37 +15,30 @@ function DropdownMenu() {
   }, []);
 
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div className="container">
-          <a className="navbar-brand" href="#">
-          
-          </a>
-          <div class="btn-group">
+    <li>
+          <div class="btn-group dropstart">
             <button
               type="button"
-              class="btn btn-primary dropdown-toggle"
+              class="btn btn-warning dropdown-toggle"
               data-bs-toggle="dropdown"
               data-bs-display="static"
               aria-expanded="false"
             >
               Menu
             </button>
-            <ul class="dropdown-menu dropdown-menu-end">
+            <ul class="dropdown-menu dropdown-menu-lg-start">
               {navLinks.map((d, i) => (
                 <li key={i}>
-                  <Link to={d.path}>
-                    <button class="dropdown-item" type="button">
+                  <Link to={d.path} className="dropdown-item">
+                    
                       {d.name}
-                    </button>
+                    
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-        </div>
-      </nav>
-    </div>
+    </li>
   );
 }
 

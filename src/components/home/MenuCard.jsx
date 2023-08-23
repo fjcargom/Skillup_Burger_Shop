@@ -18,22 +18,18 @@ const MenuCard = ({ itemNum, burgerSrc, price, title, handler, delay = 0 }) => {
         delay,
       }}
     >
+      {/* Color de la cabecera de la tarjeta */}
       <div></div>
       <main>
         <img src={burgerSrc} alt={itemNum} />
 
-        <h5>₹{price}</h5>
+        <h5>€ {price}</h5>
 
-        <p>{title}</p>
-        <Popup trigger=
-                {<button onClick={() => handler(itemNum)}>Buy Now</button>}
-               >
-                <div style={{color:"red", transform: 'translate(0%,-500%)', backgroundColor: '#fff', padding: '10px', borderRadius: '5px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)'}}>Added to cart!</div>
-               
-            </Popup>
-            
+        <p className="text-center">{title}</p>
+        <Popup trigger={<button onClick={() => handler(itemNum)}>Comprar ahora</button>}>
+                <div style={{color:"red", transform: 'translate(0%,-500%)', backgroundColor: '#fff', padding: '10px', borderRadius: '5px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)'}}>Agregado a la cesta</div>
+        </Popup>
 
-        
       </main>
     </motion.div>
   );

@@ -1,0 +1,37 @@
+@import "colors";
+
+a.px-1{
+    svg{
+        font-size: 1.5rem;
+        color:$orange;
+        &:hover{
+            color: $orangedark;
+        }
+    }
+}
+
+a.nav-link.active{
+    background-color: $orangelight !important;
+}
+
+input.form-control:focus{
+    border-color: $orange;
+    box-shadow: none;
+}
+
+input.form-check-input:checked{
+    background-color: $orange !important;  
+    border-color:$orangedark !important;
+}
+div.justify-content-between{
+    a{
+        color: $orangedark;
+    }
+
+}
+
+p{
+    a,a:hover{
+        color:$orangedark;
+    }
+}

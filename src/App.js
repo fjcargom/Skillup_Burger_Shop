@@ -3,18 +3,20 @@ import Home from "./components/home/Home";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import Contact from "./components/contact/Contact";
-// Add module imports for CART
+import Cart from "./components/cart/Cart";
+import Shipping from "./components/cart/Shipping"
 
-// Add module imports for Shipping
 
 import Login from "./components/login/Login";
 import Profile from "./components/profile/Profile";
-// Add module imports for MY ORDERS
+import MyOrders from "./components/myOrders/MyOrders"
 
 import OrderDetails from "./components/myOrders/OrderDetails";
 import About from "./components/about/About";
 
 
+
+// Estilos necesarios para nuestro proyecto
 import "./styles/app.scss";
 import "./styles/header.scss";
 import "./styles/home.scss";
@@ -29,8 +31,11 @@ import "./styles/profile.scss";
 import "./styles/table.scss";
 import "./styles/orderDetails.scss";
 import "./styles/about.scss";
+import "./styles/DropdownMenu.scss";
 
 function App() {
+  
+  
   return (
     <Router>
       <Header isAuthenticated={true} />
@@ -38,19 +43,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
-          //           Add the Route for CART
-      
-          //           Add the Route for SHIPPING
-        
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/Shipping" element={<Shipping />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/me" element={<Profile />} />
-         //           Add the Route for MY ORDERS
-
-        <Route path="/order/:id" element={<OrderDetails />} />
-      
-       
-
-        
+        <Route path="/myOrders" element={<MyOrders />} />
+        {/* <Route path="/me" element={<Profile />} />  */}
+        <Route path="/myOrders/OrderDetails" element={<OrderDetails />} />
+        {/* <Route path="/order/:id" element={<OrderDetails />} /> */}
+                 
       </Routes>
 
       <Footer />

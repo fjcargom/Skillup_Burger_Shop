@@ -30,7 +30,7 @@
     > div {
       margin: 2rem;
       > a {
-        background-color: $red;
+        background-color: $orange;
         color: white;
         padding: 0.7rem 1.5rem;
         font-size: 1rem;
@@ -41,7 +41,7 @@
           margin-right: 0.5rem;
         }
         &:hover {
-          background-color: $reddark;
+          background-color: $orangedark;
         }
       }
     }

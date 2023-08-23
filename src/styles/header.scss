@@ -1,49 +1,36 @@
 @import "colors";
 
-nav {
-  height: 5rem;
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.229);
-  background-color: white;
-
-  > div {
-    display: flex;
-    align-items: center;
-
-    > svg {
-      color: $red;
-      font-size: 3rem;
+nav{
+  div{
+    margin: 0 1rem;
+    svg{
+      font-size: 2.5rem;
+      color: $orange;
     }
-
-    > a {
-      margin: 0 2rem;
-      color: $dark;
-      transition: color 0.3s;
-
-      &:hover {
-        color: $lightdark;
-      }
-
-      > svg {
-        color: $red;
-        transition: inherit;
-        font-size: 1.5rem;
-        &:hover {
-          color: $lightdark;
+  }
+  
+  li{
+      svg{
+        font-size: 2rem;
+        transition: color 0.5s;
+        &:hover{
+          color:$lightdark;
+          transition: color 0.6s;
         }
       }
     }
-  }
-}
-
-@media screen and (max-width: 600px) {
-  nav {
-    padding: 1rem;
-    > div > a {
-      margin: 0 0.5rem;
+  li{
+    div{
+      a {
+          // margin: 0 2rem;
+          color: $orangedark;
+          transition: color 0.5s;
+          &:hover {
+            color: $lightdark;
+            transition: color 0.6s;
+          }
+      }
     }
   }
-}
+}  
+  

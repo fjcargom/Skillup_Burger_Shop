@@ -10,12 +10,12 @@
     max-width: 900px;
     margin: auto;
     padding: 2rem;
-
+    
     > h1 {
       text-transform: uppercase;
       text-align: center;
       margin: 3rem;
-      font: 100 3rem "Roboto";
+      font: 400 3rem "Roboto";
     }
 
     > form {
@@ -41,6 +41,21 @@
           border-radius: 5px;
           margin: 1rem;
           font-size: 1rem;
+          font-weight: 100 ;
+          background-color: white;
+        }
+      }
+      > button {
+        background-color: $orange;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        text-align: center;
+        margin-top: 2rem;
+        float: right;
+        border: none;
+        &:hover{
+          background-color: $orangedark;
         }
       }
       
@@ -77,6 +92,6 @@
 }
 
 .link:hover {
-  background-color:  $reddark;
+  background-color:  $orangedark;
   text-decoration: none;
 }
